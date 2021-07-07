@@ -21,7 +21,7 @@ class Question(Page):
 
     def vars_for_template(self):
         return {
-            'table_link': 2,#self.session.config['table_link'],
+            'table_link': self.session.config['table_link'],
         }
 
 
@@ -42,7 +42,7 @@ class Results(Page):
 
 
 page_sequence = [
-    #Introduction,
+    Introduction,
     Question,
     Results
 ]

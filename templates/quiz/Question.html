@@ -7,6 +7,8 @@
 
 {% block content %}
 
+    <iframe src="{{ table_link }}" width="600" height="400" frameborder="0"></iframe>
+
     {% formfield player.submitted_answer label=player.question %}
 
     {% next_button %}
