@@ -19,11 +19,6 @@ class Question(Page):
     form_model = 'player'
     form_fields = ['submitted_answer']
 
-    def vars_for_template(self):
-        return {
-            'table_link': self.session.config['table_link'],
-        }
-
 
     def before_next_page(self):
         self.player.check_correct()
