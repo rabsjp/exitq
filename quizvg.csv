@@ -1,6 +1,0 @@
-id,question,choice1,choice2,choice3,choice4,solution
-1,How many people are you matched with each round?,1,2,3,4,2
-2,No one in your group has chosen to invest in this round. How much did you earn?,100,200,300,0,100
-3,You choose to invest first. How much will you earn in that round?,100,125,0,200,125
-4,You choose to invest first. How much will each of the other players earn in that round?,100,125,150,200,200
-5,Can you be matched with the same individuals in consecutive rounds?,Yes,No,,,No

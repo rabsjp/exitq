@@ -1,7 +1,0 @@
-id,question,choice1,choice2,choice3,solution
-1,If you submit a price of 70 and the market clearing price is 60 you will:,Buy a share,Sell a share,Not transact,Buy a share
-2,You hold 2 shares. Your weight w_i is 0.7. 100 is the benefit amount from the policy and C is the cost of the policy. What is your net benefit if the policy is approved:,2*100 - 0.7*C,0.7*100 - C,0.7*100 - 2*C,0.7*100 - 2*C
-3,If you sell an asset then ,Your cash holdings will decrease by the market price,Your cash holdings will increase by the market price,Your cash holdings will increase by your submitted price,Your cash holdings will increase by the market price
-4,If a majority vote to approve the proposal then what is the net payoff for those who hold one share:,100 - C + w_i*100,2*(100 - C),100,100 - C + w_i*100
-5,If a majority vote to reject the proposal then what is the share payout for those that hold two shares,200 + w_i*100,2*(100 - C),200,200
-6,The personal benefit from the policy is,the same for all market participants,proportional to w_i,zero for those who do not hold any shares,proportional to w_i
