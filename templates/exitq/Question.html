@@ -7,9 +7,10 @@
 
 {% block content %}
 
-
-
     {% formfield player.submitted_answer label=player.question %}
+
+    {% formfield player.other label="Other reason:" %}
+
 
     {% next_button %}
 

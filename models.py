@@ -49,6 +49,7 @@ class Player(BasePlayer):
     question_id = models.IntegerField()
     question = models.StringField()
     submitted_answer = models.StringField()
+    other = models.CharField(blank=True)
 
     def submitted_answer_choices(self):
         qd = self.current_question()
@@ -56,7 +57,7 @@ class Player(BasePlayer):
             qd['choice1'],
             qd['choice2'],
             qd['choice3'],
-            #qd['choice4'],
+            qd['choice4'],
         ]
 
     def current_question(self):

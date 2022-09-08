@@ -12,11 +12,10 @@ class Introduction(Page):
 
 class Question(Page):
     form_model = 'player'
-    form_fields = ['submitted_answer']
+    form_fields = ['submitted_answer', 'other']
 
 
 page_sequence = [
     Introduction,
     Question,
-
 ]
