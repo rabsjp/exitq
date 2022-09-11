@@ -14,52 +14,60 @@ Survey exit
 class Constants(BaseConstants):
     name_in_url = 'exitq'
     players_per_group = None
-    with open('exitq/exit_survey.csv') as questions_file:
-        questions = list(csv.DictReader(questions_file))
-
-    num_rounds = len(questions)
+    num_rounds = 1
 
 
 class Subsession(BaseSubsession):
-    def creating_session(self):
-        if self.round_number == 1:
-            self.session.vars['questions'] = Constants.questions.copy()
-            ## ALTERNATIVE DESIGN:
-            ## to randomize the order of the questions, you could instead do:
-
-            # import random
-            # randomized_questions = random.sample(Constants.questions, len(Constants.questions))
-            # self.session.vars['questions'] = randomized_questions
-
-            ## and to randomize differently for each participant, you could use
-            ## the random.sample technique, but assign into participant.vars
-            ## instead of session.vars.
-
-        for p in self.get_players():
-            question_data = p.current_question()
-            p.question_id = int(question_data['id'])
-            p.question = question_data['question']
+    pass
 
 
 class Group(BaseGroup):
     pass
 
-
 class Player(BasePlayer):
-    question_id = models.IntegerField()
-    question = models.StringField()
-    submitted_answer = models.StringField()
-    other = models.CharField(blank=True)
 
-    def submitted_answer_choices(self):
-        qd = self.current_question()
-        return [
-            qd['choice1'],
-            qd['choice2'],
-            qd['choice3'],
-            qd['choice4'],
-        ]
+    why_accept = models.StringField(
+        choices=[['To help other participants ', 'To help other participants '],
+                 [' To increase my own earnings', ' To increase my own earnings'],
+                 ['To ensure fair payoffs', 'To ensure fair payoffs'],
+                 ['Other reason (specify bellow)', 'Other reason (specify bellow)']],
+        label='What is the main reason for you to ACCEPT the proposal?',
+        widget=widgets.RadioSelect,
+    )
 
-    def current_question(self):
-        return self.session.vars['questions'][self.round_number - 1]
+    other_accept = models.CharField(blank=True,label='Other reason for accepting')
+
+    why_reject = models.StringField(
+        choices=[['To help other participants ', 'To help other participants '], [' To increase my own earnings', ' To increase my own earnings'],
+                 ['To ensure fair payoffs', 'To ensure fair payoffs'], ['Other reason (specify below)', 'Other reason (specify below)']],
+        label='What is the main reason for you to REJECT the proposal?',
+        widget=widgets.RadioSelect,
+    )
+
+
+    other_reject = models.CharField(blank=True,label='Other reason for rejecting')
+
+    age = models.IntegerField(label='What is your age?', min=17, max=125)
+
+    gender = models.StringField(
+        choices=[['Man', 'Man'], ['Woman', 'Woman'], ['Non-binary/gender diverse', 'Non-binary/gender diverse']],
+        label='What is your gender?',
+        widget=widgets.RadioSelect,
+    )
+
+    major = models.StringField(
+        choices=[['Not a student', 'Not a student'], ['Science, technology, engineering and mathematics', 'Science, technology, engineering and mathematics'],
+                 ['Social sciences', 'Social sciences'], ['Business, Finance', 'Business, Finance'], ['Art and humanities', 'Art and humanities']],
+        label='What is your major?',
+        widget=widgets.RadioSelect,
+    )
+
+    political = models.StringField(
+        choices=[['Left', 'Left'], ['Center', 'Center'], ['Right', 'Right']],
+        label='What is your political orientation?',
+        widget=widgets.RadioSelect,
+    )
+
+    gpa = models.DecimalField(label='What is your GPA?', min=0.0, max=4.0, decimal_places=1, max_digits=2)
+
 

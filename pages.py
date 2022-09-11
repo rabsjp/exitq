@@ -4,18 +4,11 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class Introduction(Page):
+class Survey(Page):
 
-    def is_displayed(self):
-        return self.round_number == 1
-
-
-class Question(Page):
     form_model = 'player'
-    form_fields = ['submitted_answer', 'other']
-
+    form_fields = ['why_accept','other_accept','why_reject','other_reject','age', 'gender','major','gpa','political']
 
 page_sequence = [
-    Introduction,
-    Question,
+    Survey,
 ]
